@@ -1,0 +1,205 @@
+<RelativeLayout
+    android:id="@+id/playerProcessFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sample_background"
+    android:isScrollContainer="false"
+    android:padding="10dp"
+    tools:context="com.javali.scorecricket.activity.PlayerProcessFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/playerID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:visibility="invisible"
+                android:editable="false"/>
+
+            <EditText
+                android:id="@+id/editFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:ems="10"
+                android:hint="Firstname"
+                android:inputType="textPersonName"
+                android:minHeight="45dp"
+                android:textColorHint="#ff0008" />
+
+            <EditText
+                android:id="@+id/editLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editFirstName"
+                android:layout_marginTop="2dp"
+                android:ems="10"
+                android:hint="Lastname"
+                android:inputType="textPersonName"
+                android:minHeight="45dp"
+                android:textColorHint="#ff0008" />
+
+            <RadioGroup
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editLastName"
+                android:layout_marginTop="2dp"
+                android:checkedButton="@+id/male"
+                android:minHeight="45dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Male"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Female"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gender"
+                android:layout_marginTop="2dp"
+                android:hint="Birthdate"
+                android:minHeight="45dp"
+                android:textColorHint="#ff0008"
+                android:gravity="center"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dob"
+                android:layout_marginTop="2dp"
+                android:ems="10"
+                android:hint="City"
+                android:inputType="textPersonName"
+                android:minHeight="45dp" />
+
+            <EditText
+                android:id="@+id/state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/city"
+                android:layout_marginTop="2dp"
+                android:ems="10"
+                android:hint="State"
+                android:inputType="textPersonName"
+                android:minHeight="45dp" />
+
+            <RadioGroup
+                android:id="@+id/batStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/state"
+                android:layout_marginTop="2dp"
+                android:checkedButton="@+id/rhb"
+                android:minHeight="45dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rhb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Right Hand Batsman"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/lhb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Left Hand Batsman"
+                    android:textSize="18sp" />
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/keeper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/batStyle"
+                android:layout_marginTop="2dp"
+                android:minHeight="45dp"
+                android:text="Wicket Keeper" />
+
+            <Spinner
+                android:id="@+id/bowlStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/keeper"
+                android:layout_marginTop="2dp"
+                android:minHeight="45dp"
+                android:spinnerMode="dialog" />
+
+            <LinearLayout
+                android:id="@+id/playerFormSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bowlStyle"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancelPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#457ec4"
+                    android:layout_weight="1"
+                    android:text="CANCEL"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"/>
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="45dp"
+                    android:layout_weight="0"
+                    android:maxHeight="45dp" />
+
+                <Button
+                    android:id="@+id/savePlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#457ec4"
+                    android:layout_weight="1"
+                    android:text="SAVE"
+                    android:textColor="#ffffff"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

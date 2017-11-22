@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Score Cricket</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_player">Search Player</string>
+    <string name="team_name">Team Name</string>
+    <string name="new_team">New Team</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="enter_team_name">Enter Team Name</string>
+    <string name="new_matches">New Matches</string>
+    <string name="search_team">Search Team</string>
+    <string name="score_cricket">Score Cricket</string>
+    <string name="shashankskumara_gmail_com">shashankskumara@gmail.com</string>
+    <string name="remove_player">Remove Player</string>
+    <string name="logo">Score Cricket App Logo</string>
+    <string name="my_matches">My Matches</string>
+    <string name="create_new">Create New</string>
+    <string name="add">Add</string>
+
+    <!-- Spinner data -->
+    <string-array name="bowl_style">
+        <item id="0">Select Bowling Style</item>
+        <item id="1">Right-arm Fast</item>
+        <item id="2">Right-arm Fast Medium</item>
+        <item id="3">Right-arm Medium Fast</item>
+        <item id="4">Right-arm Medium</item>
+        <item id="5">Left-arm Fast</item>
+        <item id="6">Left-arm Fast Medium</item>
+        <item id="7">Left-arm Medium Fast</item>
+        <item id="8">Left-arm Medium</item>
+        <item id="9">Off Break</item>
+        <item id="10">Leg Break</item>
+        <item id="11">Slow Left-arm Orthodox</item>
+        <item id="12">Slow Left-arm Chinaman</item>
+    </string-array>
+
+    <!-- Font Number Picker -->
+    <string name="roboto_regular">sans-serif</string>
+    <string name="roboto_light">sans-serif-light</string>
+    <string name="roboto_condensed">sans-serif-condensed</string>
+    <string name="roboto_thin">sans-serif-thin</string>
+    <string name="roboto_medium">sans-serif-medium</string>
+    <string name="number_picker_formatter">%02d</string>
+</resources>

@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="com.javali.scorecricket.activity.TeamFragment">
+
+    <SearchView
+        android:id="@+id/teamSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPersonName"
+        android:hint="@string/search_team"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/teamListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/teamSearch"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addNewTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="bottom|end"
+        android:clickable="true"
+        app:backgroundTint="#ffff4444"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_input_add" android:focusable="true" />
+
+</RelativeLayout>

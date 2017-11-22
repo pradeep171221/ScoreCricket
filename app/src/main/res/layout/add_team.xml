@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/teamHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:minHeight="45dp"
+        android:text="@string/new_team"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/teamName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:minHeight="45dp"
+        android:layout_below="@+id/teamHeader"
+        android:hint="@string/enter_team_name" />
+
+    <LinearLayout
+        android:layout_below="@id/teamName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancelTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#457ec4"
+            android:textColor="#ffffff"
+            android:text="@string/cancel" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="45dp"
+            android:layout_weight="0"
+            android:maxHeight="45dp" />
+
+        <Button
+            android:id="@+id/saveTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#457ec4"
+            android:textColor="#ffffff"
+            android:text="@string/save" />
+    </LinearLayout>
+</RelativeLayout>
