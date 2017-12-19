@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity
         PlayerFragment.OnFragmentInteractionListener,
         PlayerProcessFragment.OnFragmentInteractionListener,
         TeamManagementFragment.OnFragmentInteractionListener,
+        MatchTossFragment.OnFragmentInteractionListener,
         ScoringSheetFragment.OnFragmentInteractionListener{
 
     private Toolbar mToolbar;

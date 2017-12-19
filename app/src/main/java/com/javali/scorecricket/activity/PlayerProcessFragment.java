@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.javali.scorecricket.R;
 import com.javali.scorecricket.model.PlayerModel;
+import com.javali.scorecricket.services.FragmentCallBack;
 import com.javali.scorecricket.services.FragmentServices;
 import com.javali.scorecricket.services.MyDBAdapter;
 
@@ -85,6 +86,9 @@ public class PlayerProcessFragment extends Fragment implements DatePickerDialog.
     private String sBatStyle;
     private boolean sKeeper;
     private int sBowlStyle;
+    private boolean mainFlag = false;
+
+    private PlayerModel playerModelData;
 
     public PlayerProcessFragment() {
         // Required empty public constructor
@@ -225,32 +229,35 @@ public class PlayerProcessFragment extends Fragment implements DatePickerDialog.
                 }
 
                 if (flag) {
-                    PlayerModel p = new PlayerModel();
+                    playerModelData = new PlayerModel();
                     if ((mPlayerId.getText().toString()).equalsIgnoreCase("")) {
-                        p.set_id(0);
+                        playerModelData.set_id(-1);
+                        mainFlag = true;
                     } else {
-                        p.set_id(Integer.parseInt(mPlayerId.getText().toString()));
+                        playerModelData.set_id(Integer.parseInt(mPlayerId.getText().toString()));
                     }
-                    p.setFirstName(mEditFirstName.getText().toString());
-                    p.setLastName(mEditLastName.getText().toString());
-                    p.setGender(mGenderButton.getText().toString());
-                    p.setDob(mBirthDate.getText().toString());
-                    p.setCity(mCity.getText().toString());
-                    p.setState(mState.getText().toString());
-                    p.setBattingstyle(mBatStyleButton.getText().toString());
-                    p.setKeeper("" + mKeeper.isChecked());
-                    p.setBowlingstyle((int) mBowlStyle.getSelectedItemId());
-                    long data = mMyDBAdapter.insertPlayer(p);
+                    playerModelData.setFirstName(mEditFirstName.getText().toString());
+                    playerModelData.setLastName(mEditLastName.getText().toString());
+                    playerModelData.setGender(mGenderButton.getText().toString());
+                    playerModelData.setDob(mBirthDate.getText().toString());
+                    playerModelData.setCity(mCity.getText().toString());
+                    playerModelData.setState(mState.getText().toString());
+                    playerModelData.setBattingstyle(mBatStyleButton.getText().toString());
+                    playerModelData.setKeeper("" + mKeeper.isChecked());
+                    playerModelData.setBowlingstyle((int) mBowlStyle.getSelectedItemId());
+                    long data = mMyDBAdapter.insertPlayer(playerModelData);
                     if (data == -1) {
                         Toast.makeText(getContext(), "Database Error", Toast.LENGTH_SHORT).show();
                     } else {
+                        playerModelData.set_id((int) data);
                         Snackbar snackbar = Snackbar.make(getView(), "Player details saved", Snackbar.LENGTH_LONG);
                         snackbar.show();
                     }
 
                     FragmentServices.closeInputSoftKeyboard(getActivity());
                     FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.main_container, new PlayerFragment()).commit();
+                    fragmentManager.popBackStackImmediate();
+                    //fragmentManager.beginTransaction().replace(R.id.main_container, new PlayerFragment()).commit();
 
                     //FragmentServices.closeInputSoftKeyboard(getActivity());
                     //FragmentServices.removeFragmentFromStack(getActivity().getSupportFragmentManager());
@@ -266,7 +273,8 @@ public class PlayerProcessFragment extends Fragment implements DatePickerDialog.
                 //FragmentServices.removeFragmentFromStack(getActivity().getSupportFragmentManager());
 
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.main_container, new PlayerFragment()).commit();
+                fragmentManager.popBackStackImmediate();
+                //fragmentManager.beginTransaction().replace(R.id.main_container, new PlayerFragment()).commit();
             }
         });
 
@@ -330,4 +338,16 @@ public class PlayerProcessFragment extends Fragment implements DatePickerDialog.
         void onFragmentInteraction(Uri uri);
     }
 
+    private FragmentCallBack fragmentCallBack;
+    public void setFragmentCallback(FragmentCallBack callback) {
+        this.fragmentCallBack = callback;
+    }
+
+    @Override
+    public void onDestroy() {
+        if(fragmentCallBack != null){
+            fragmentCallBack.onDataSent(playerModelData, mainFlag);
+        }
+        super.onDestroy();
+    }
 }

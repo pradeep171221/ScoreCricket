@@ -12,17 +12,21 @@ import java.util.ArrayList;
 public class MatchModel implements Parcelable{
 
     private long _matchId;
-    private long team_aId;
-    private long team_bId;
     private String venue;
     private String umpireA;
     private String umpireB;
     private int overs;
-    private long toss_won;
     private String elected;
     private String progress;
     private String result;
     private String matchDate;
+    private long toss_won;
+    private TeamModel team_a;
+    private TeamModel team_b;
+    private String score_one;
+    private String score_two;
+    private String extras;
+
     private ArrayList<MatchModel> matchModels;
 
     public MatchModel() {}
@@ -31,10 +35,8 @@ public class MatchModel implements Parcelable{
         this.matchModels = matchModels;
     }
 
-    public MatchModel(long _matchId, long team_aId, long team_bId, String venue, String umpireA, String umpireB, int overs, long toss_won, String elected, String progress, String result, String matchDate) {
+    public MatchModel(long _matchId, String venue, String umpireA, String umpireB, int overs, long toss_won, String elected, String progress, String result, String matchDate, String score_one, String score_two, String extras, TeamModel team_a, TeamModel team_b) {
         this._matchId = _matchId;
-        this.team_aId = team_aId;
-        this.team_bId = team_bId;
         this.venue = venue;
         this.umpireA = umpireA;
         this.umpireB = umpireB;
@@ -44,21 +46,29 @@ public class MatchModel implements Parcelable{
         this.progress = progress;
         this.result = result;
         this.matchDate = matchDate;
+        this.score_one = score_one;
+        this.score_two = score_two;
+        this.extras = extras;
+        this.team_a = team_a;
+        this.team_b = team_b;
     }
 
     protected MatchModel(Parcel in) {
         _matchId = in.readLong();
-        team_aId = in.readLong();
-        team_bId = in.readLong();
         venue = in.readString();
         umpireA = in.readString();
         umpireB = in.readString();
         overs = in.readInt();
-        toss_won = in.readLong();
         elected = in.readString();
         progress = in.readString();
         result = in.readString();
         matchDate = in.readString();
+        toss_won = in.readLong();
+        team_a = in.readParcelable(TeamModel.class.getClassLoader());
+        team_b = in.readParcelable(TeamModel.class.getClassLoader());
+        score_one = in.readString();
+        score_two = in.readString();
+        extras = in.readString();
         matchModels = in.createTypedArrayList(MatchModel.CREATOR);
     }
 
@@ -80,22 +90,6 @@ public class MatchModel implements Parcelable{
 
     public void set_matchId(long _matchId) {
         this._matchId = _matchId;
-    }
-
-    public long getTeam_aId() {
-        return team_aId;
-    }
-
-    public void setTeam_aId(long team_aId) {
-        this.team_aId = team_aId;
-    }
-
-    public long getTeam_bId() {
-        return team_bId;
-    }
-
-    public void setTeam_bId(long team_bId) {
-        this.team_bId = team_bId;
     }
 
     public String getVenue() {
@@ -130,14 +124,6 @@ public class MatchModel implements Parcelable{
         this.overs = overs;
     }
 
-    public long getToss_won() {
-        return toss_won;
-    }
-
-    public void setToss_won(long toss_won) {
-        this.toss_won = toss_won;
-    }
-
     public String getElected() {
         return elected;
     }
@@ -170,6 +156,54 @@ public class MatchModel implements Parcelable{
         this.matchDate = matchDate;
     }
 
+    public long getToss_won() {
+        return toss_won;
+    }
+
+    public void setToss_won(long toss_won) {
+        this.toss_won = toss_won;
+    }
+
+    public TeamModel getTeam_a() {
+        return team_a;
+    }
+
+    public void setTeam_a(TeamModel team_a) {
+        this.team_a = team_a;
+    }
+
+    public TeamModel getTeam_b() {
+        return team_b;
+    }
+
+    public void setTeam_b(TeamModel team_b) {
+        this.team_b = team_b;
+    }
+
+    public String getScore_one() {
+        return score_one;
+    }
+
+    public void setScore_one(String score_one) {
+        this.score_one = score_one;
+    }
+
+    public String getScore_two() {
+        return score_two;
+    }
+
+    public void setScore_two(String score_two) {
+        this.score_two = score_two;
+    }
+
+    public String getExtras() {
+        return extras;
+    }
+
+    public void setExtras(String extras) {
+        this.extras = extras;
+    }
+
     public ArrayList<MatchModel> getMatchModels() {
         return matchModels;
     }
@@ -186,8 +220,8 @@ public class MatchModel implements Parcelable{
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeLong(_matchId);
-        dest.writeLong(team_aId);
-        dest.writeLong(team_bId);
+        dest.writeValue(team_a);
+        dest.writeValue(team_b);
         dest.writeString(venue);
         dest.writeString(umpireA);
         dest.writeString(umpireB);
@@ -197,6 +231,9 @@ public class MatchModel implements Parcelable{
         dest.writeString(progress);
         dest.writeString(result);
         dest.writeString(matchDate);
+        dest.writeString(score_one);
+        dest.writeString(score_two);
+        dest.writeString(extras);
         dest.writeTypedList(matchModels);
     }
 }

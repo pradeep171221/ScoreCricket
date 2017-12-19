@@ -16,6 +16,10 @@ public class TeamModel implements Parcelable {
 
     public TeamModel() {}
 
+    public TeamModel(int teamId) {
+        this._teamId = teamId;
+    }
+
     public TeamModel(int teamId, String teamName) {
         this._teamId = teamId;
         this.teamName = teamName;

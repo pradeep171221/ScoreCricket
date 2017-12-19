@@ -148,7 +148,7 @@ public class TeamFragment extends Fragment implements SearchView.OnQueryTextList
 
                                 teamModel.set_teamId(data);
                                 teamArray.add(teamModel);
-                                mAdapter = new RecyclerAdapter(teamArray, getContext(), getFragmentManager(), "Team");
+                                mAdapter = new RecyclerAdapter(teamArray, getContext(), getFragmentManager(), "team");
                                 mRecyclerTeamList.setAdapter(mAdapter);
                                 mAdapter.notifyDataSetChanged();  // data set changed
                             }

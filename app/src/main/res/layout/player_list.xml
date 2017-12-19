@@ -21,7 +21,9 @@
             android:padding="8dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:singleLine="true"
-            android:ellipsize="marquee"/>
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"/>
 
     </RelativeLayout>
 

@@ -40,4 +40,10 @@ public class FragmentServices {
     public static void removeFragmentFromStack(FragmentManager fragmentManager) {
         fragmentManager.popBackStackImmediate();
     }
+
+    public static String formatDate (String date) {
+        date = date.replace(",", "");
+        String[] ary = date.split(" ");
+        return ary[0] + " " + ary[1];
+    }
 }

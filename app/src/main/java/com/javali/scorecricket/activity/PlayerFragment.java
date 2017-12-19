@@ -23,11 +23,15 @@ import android.widget.Toast;
 
 import com.javali.scorecricket.R;
 import com.javali.scorecricket.model.PlayerModel;
+import com.javali.scorecricket.services.FragmentCallBack;
 import com.javali.scorecricket.services.FragmentServices;
 import com.javali.scorecricket.services.MyDBAdapter;
+import com.javali.scorecricket.services.PlayerModelComparator;
 import com.javali.scorecricket.services.RecyclerAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 /**
@@ -36,7 +40,7 @@ import java.util.ArrayList;
  * {@link PlayerFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class PlayerFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class PlayerFragment extends Fragment implements SearchView.OnQueryTextListener, FragmentCallBack {
     private SearchView playerSearch;
     private RecyclerView mRecyclerView;
     private RecyclerAdapter mAdapter;
@@ -74,15 +78,21 @@ public class PlayerFragment extends Fragment implements SearchView.OnQueryTextLi
                 args.putString("page", "addplayer");
                 PlayerProcessFragment ppf = new PlayerProcessFragment();
                 ppf.setArguments(args);
+                ppf.setFragmentCallback(new FragmentCallBack() {
+                    @Override
+                    public void onDataSent(PlayerModel playerModel, boolean flag) {
+                        getData(playerModel, flag);
+                    }
+                });
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.main_container, ppf);
+//                fragmentTransaction.commit();
 
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.main_container, ppf);
-                fragmentTransaction.commit();
-
-                //FragmentManager fragmentManager = getFragmentManager();
-                //fragmentManager.beginTransaction().replace(R.id.main_container, ppf).commit();
-                //FragmentServices.addFragmentToStack("Add Player", getActivity().getSupportFragmentManager(), ppf);
+//                FragmentManager fragmentManager = getFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.replace(R.id.main_container, ppf).commit();
+                FragmentServices.addFragmentToStack("Add Player", getFragmentManager(), ppf);
             }
         });
 
@@ -110,8 +120,16 @@ public class PlayerFragment extends Fragment implements SearchView.OnQueryTextLi
                 }
                 PlayerProcessFragment ppf = new PlayerProcessFragment();
                 ppf.setArguments(args);
+                ppf.setFragmentCallback(new FragmentCallBack() {
+                    @Override
+                    public void onDataSent(PlayerModel playerModel, boolean flag) {
+                        getData(playerModel, flag);
+                    }
+                });
+
                 FragmentServices.closeInputSoftKeyboard(getActivity());
-                fragmentTransaction.replace(R.id.main_container, ppf).commit();
+                //fragmentTransaction.replace(R.id.main_container, ppf).commit();
+                FragmentServices.addFragmentToStack("Add Player", getFragmentManager(), ppf);
             }
 
             @Override
@@ -122,16 +140,47 @@ public class PlayerFragment extends Fragment implements SearchView.OnQueryTextLi
         return view;
     }
 
+    public void getData(PlayerModel playerModel, boolean flag) {
+        if (playerModel != null) {
+
+            if(flag) {
+                playerArray.add(playerModel);
+            } else {
+                //Add player to array. If already existReplace player from all players list
+                Comparator<PlayerModel> playerModelComparator = new PlayerModelComparator();
+                ArrayList<PlayerModel> arr = new ArrayList<PlayerModel>();
+                arr.add(playerModel);
+                int index = Collections.binarySearch(playerArray, new PlayerModel(playerModel.get_id()), playerModelComparator);
+                playerArray.remove(index);
+            }
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.add_event:
-                Toast.makeText(getContext(), "Add Player", Toast.LENGTH_SHORT).show();
+                addPlayer();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void addPlayer() {
+        Bundle args = new Bundle();
+        args.putString("page", "addplayer");
+        PlayerProcessFragment ppf = new PlayerProcessFragment();
+        ppf.setArguments(args);
+        ppf.setFragmentCallback(new FragmentCallBack() {
+            @Override
+            public void onDataSent(PlayerModel playerModel, boolean flag) {
+                getData(playerModel, flag);
+            }
+        });
+        FragmentServices.addFragmentToStack("Add Player", getFragmentManager(), ppf);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -177,6 +226,11 @@ public class PlayerFragment extends Fragment implements SearchView.OnQueryTextLi
         return false;
     }
 
+    @Override
+    public void onDataSent(PlayerModel playerModel, boolean flag) {
+        //Toast.makeText(getContext(), "" + yourData, Toast.LENGTH_SHORT).show();
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -191,4 +245,5 @@ public class PlayerFragment extends Fragment implements SearchView.OnQueryTextLi
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }

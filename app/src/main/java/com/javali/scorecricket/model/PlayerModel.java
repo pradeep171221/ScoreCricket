@@ -178,4 +178,8 @@ public class PlayerModel implements Parcelable{
         dest.writeInt(bowlingstyle);
 
     }
+
+    public String toString() {
+        return( firstName + " " + lastName);
+    }
 }

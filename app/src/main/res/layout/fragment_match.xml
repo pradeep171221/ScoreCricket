@@ -1,9 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
     tools:context="com.javali.scorecricket.activity.MatchFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -14,18 +16,5 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/createNewMatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="bottom|end"
-        android:clickable="true"
-        app:backgroundTint="#ffff4444"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_input_add" android:focusable="true" />
 
 </RelativeLayout>

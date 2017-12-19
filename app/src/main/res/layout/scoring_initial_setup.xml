@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/startInnings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        android:gravity="center|center_vertical"
+        android:minHeight="30dp"
+        android:text="Start Innings"
+        android:textColor="#ffffff"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/init_setup_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:gravity="center_vertical"
+            android:text="Select Players"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="#a3a3a3"/>
+
+        <LinearLayout
+            android:id="@+id/batting_team_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:layout_gravity="fill"
+                android:gravity="center_vertical"
+                android:layout_weight="2"
+                android:text="Batting Team:"/>
+
+            <TextView
+                android:id="@+id/init_batTeam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="5dp"
+                android:layout_weight="1"
+                android:text="Team Name" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/batting_team_striker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Striker:" />
+
+            <Spinner
+                android:id="@+id/init_striker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:minHeight="30dp"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/batting_team_nonstriker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="NonStriker:" />
+
+            <Spinner
+                android:id="@+id/init_nonstriker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:minHeight="30dp"
+                android:spinnerMode="dialog" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="#a3a3a3"/>
+
+        <LinearLayout
+            android:id="@+id/bowling_teamname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Bowling Team:"/>
+
+            <TextView
+                android:id="@+id/init_bowlTeam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:text="Team Name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bowling_team_player"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="30dp"
+                android:layout_gravity="fill"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
+                android:text="Bowler:" />
+
+            <Spinner
+                android:id="@+id/init_bowler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:minHeight="30dp"
+                android:spinnerMode="dialog"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/init_ok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:text="Ok"/>
+
+    <!--</GridLayout>-->
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Players"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dip"
+        android:background="#a3a3a3" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Batting Team:"/>
+
+    <TextView
+        android:id="@+id/battingTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Team Name"/>-->
+
+    </LinearLayout>
+</LinearLayout>

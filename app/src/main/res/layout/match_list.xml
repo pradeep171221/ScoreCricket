@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:padding="5dp">
 
     <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp" >
+        card_view:cardElevation="5dp"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,7 +47,11 @@
                     android:id="@+id/match_progress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Game Progress"/>
+                    android:text="Game Progress"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"/>
             </LinearLayout>
 
             <LinearLayout
@@ -73,17 +75,18 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/status"
+                android:id="@+id/result"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Status"
                 android:layout_weight="1"
                 android:textSize="18dp"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_vertical|center"/>
+                android:gravity="center_vertical|center"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"/>
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-
-</RelativeLayout>
